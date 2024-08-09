@@ -17,7 +17,6 @@ export function getStatus(index: number, active: any) {
 export function Steps(props: StepsProps) {
   const {
     steps = [],
-    renderStep,
     active = 0,
     direction = 'horizontal',
     activeColor = GREEN,
@@ -66,14 +65,8 @@ export function Steps(props: StepsProps) {
                 className="van-step__title"
                 style={index === active ? 'color: ' + activeColor : ''}
               >
-                {renderStep ? (
-                  renderStep(item)
-                ) : (
-                  <>
-                    <View>{item.text}</View>
-                    <View className="desc-class">{item.desc}</View>
-                  </>
-                )}
+                <View>{item.text}</View>
+                <View className="desc-class">{item.desc}</View>
               </View>
               <View className="van-step__circle-container">
                 {index !== active ? (

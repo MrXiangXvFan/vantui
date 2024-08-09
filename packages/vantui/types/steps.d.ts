@@ -1,14 +1,6 @@
 import { FunctionComponent } from 'react'
 import { ViewProps, ITouchEvent } from '@tarojs/components'
 
-export interface Step {
-  index?: number
-  desc: React.ReactNode
-  text: string
-  activeIcon?: string
-  inactiveIcon?: string
-}
-
 export interface StepsProps extends ViewProps {
   /**
    * @description icon统一class的前缀
@@ -17,11 +9,13 @@ export interface StepsProps extends ViewProps {
   /**
    * @description 	Step 配置项数组
    */
-  steps?: Step[]
-  /**
-   * @description 	自定义 Step 渲染
-   */
-  renderStep?: (step: Step) => React.ReactNode
+  steps?: {
+    index?: number
+    desc: React.ReactNode
+    text: string
+    activeIcon?: string
+    inactiveIcon?: string
+  }[]
   /**
    * @description 	当前步骤
    * @default 0
