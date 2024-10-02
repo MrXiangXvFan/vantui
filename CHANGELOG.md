@@ -1,4 +1,36 @@
-# [3.4.7](https://github.com/AntmJS/vantui/compare/v3.4.6...v3.4.7) (2024-07-24)
+# [3.5.0](https://github.com/AntmJS/vantui/compare/v3.4.9...v) (2024-09-24)
+
+### Bug Fixes
+
+- icon 组件高度适配内容大小 ([13afa29](https://github.com/AntmJS/vantui/commit/13afa29226674dbef491904a71b80f0e798196aa))
+
+### Features
+
+- date-picker、area 支持 picker 的弹窗模式 ([ca19f27](https://github.com/AntmJS/vantui/commit/ca19f270e08f2b21b50b34e069d896b344f539f4))
+
+- picker 组件支持弹窗、新增异步数据功能 ([494de45](https://github.com/AntmJS/vantui/commit/494de45ad79535ddd300e98065dbdb91a3fc55be))
+
+## [3.4.9](https://github.com/AntmJS/vantui/compare/v3.4.8...v3.4.9) (2024-09-12)
+
+### Bug Fixes
+
+- tab 组件滚动视图中央异常情况下报错（[#663](https://github.com/AntmJS/vantui/issues/663)） ([539a298](https://github.com/AntmJS/vantui/commit/539a2989f57b9ddbd07bf56c413e16936be9a5d5))
+
+### Features
+
+- 新组件 check-list 勾选列表 ([210db8f](https://github.com/AntmJS/vantui/commit/210db8f20fde0b0175eb43aa1ed3bb56b5033cba))
+
+## [3.4.8](https://github.com/AntmJS/vantui/compare/v3.4.7...v3.4.8) (2024-09-03)
+
+### Bug Fixes
+
+- table 组件 title 支持自定义 view 标签（[#680](https://github.com/AntmJS/vantui/issues/680)） ([1b3b1e0](https://github.com/AntmJS/vantui/commit/1b3b1e06814ab24f089c9b7a2e4d9d0b44984031))
+
+### Features
+
+- **Steps:** add renderStep prop ([#670](https://github.com/AntmJS/vantui/issues/670)) ([2ca9353](https://github.com/AntmJS/vantui/commit/2ca935325b5d4732086737c3e2c7732e78f335e0))
+
+## [3.4.7](https://github.com/AntmJS/vantui/compare/v3.4.6...v3.4.7) (2024-07-24)
 
 ### Bug Fixes
 

@@ -22,6 +22,7 @@ function Index(
 ): JSX.Element {
   const {
     valueKey,
+    idKey = 'text',
     itemHeight = 48,
     visibleItemCount = 5,
     initialOptions,
@@ -49,8 +50,9 @@ function Index(
   const adjustIndex = useCallback(
     function (index: number): any {
       const initialOptions_ = (
-        options.length ? options : initialOptions
+        options?.length ? options : initialOptions
       ) as Array<any>
+      if (!initialOptions_) return 0
       const count = initialOptions_.length
       index = range(index, 0, count)
       for (let i = index; i < count; i++) {
@@ -95,7 +97,13 @@ function Index(
   useEffect(
     function () {
       if (canInit) {
-        setOptions(initialOptions || [])
+        setOptions(
+          Array.isArray(initialOptions)
+            ? initialOptions
+            : initialOptions
+            ? [initialOptions]
+            : [],
+        )
       }
     },
     [canInit, initialOptions],
@@ -170,16 +178,27 @@ function Index(
     [valueKey],
   )
 
+  const getOptionID = useCallback(
+    function (option) {
+      return isObj(option) && idKey && idKey in option ? option[idKey] : option
+    },
+    [idKey],
+  )
+
   const setValue = useCallback(
     function (value) {
+      // console.info(options, value, 'setValue')
       for (let i = 0; i < options.length; i++) {
-        if (getOptionText(options[i]) === value) {
+        if (
+          getOptionText(options[i]) === value ||
+          getOptionID(options[i]) === value
+        ) {
           return setIndex(i)
         }
       }
       return Promise.resolve()
     },
-    [setIndex, getOptionText, options],
+    [setIndex, getOptionText, options, getOptionID],
   )
 
   useImperativeHandle(ref, () => {
@@ -191,7 +210,10 @@ function Index(
       setIndex,
       set: (opt: any) =>
         new Promise<void>((resolve) => {
-          setOptions(opt.options)
+          if (
+            JSON.stringify(opt.options || {}) !== JSON.stringify(options || {})
+          )
+            setOptions(opt.options)
           setCanInit(false)
           resolve()
         }),
@@ -211,6 +233,7 @@ function Index(
       {...others}
     >
       <View
+        className="van-picker-column-touch"
         style={computed.wrapperStyle({
           offset,
           itemHeight,
@@ -222,7 +245,7 @@ function Index(
         onTouchEnd={onTouchEnd}
         onTouchCancel={onTouchEnd}
       >
-        <View disable-scroll>
+        <View disable-scroll className="van-picker-column-scroll">
           {options.map((option: any, index: number) => {
             return (
               <View

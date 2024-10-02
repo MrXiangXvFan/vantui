@@ -4,8 +4,9 @@ import { DatetimePicker } from '@antmjs/vantui'
 
 export default function Demo() {
   const [state, setState] = react.useState({
-    currentDate: new Date(2018, 0, 1),
-    minDate: new Date(2018, 0, 1).getTime(),
+    currentDate: '12:00',
+    minHour: 10,
+    maxHour: 20,
   })
 
   const onInput = react.useCallback(
@@ -20,10 +21,18 @@ export default function Demo() {
 
   return (
     <DatetimePicker
-      type="year-month"
+      type="time"
       value={state.currentDate}
-      minDate={state.minDate}
+      minHour={state.minHour}
+      maxHour={state.maxHour}
       onInput={onInput}
+      filter={(type, options) => {
+        if (type === 'minute') {
+          return options.filter((option) => Number(option) % 5 === 0)
+        }
+
+        return options
+      }}
     />
   )
 }

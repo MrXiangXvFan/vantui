@@ -4,7 +4,9 @@
   position: relative;
   overflow: hidden;
   /* stylelint-disable-next-line property-no-vendor-prefix */
-  -webkit-text-size-adjust: 100%; /* avoid iOS text size adjust */
+  -webkit-text-size-adjust: 100%;
+
+  /* avoid iOS text size adjust */
   user-select: none;
   .theme(background-color, '@picker-background-color');
 
@@ -98,4 +100,23 @@
   z-index: 1;
   transform: translateY(-50%);
   pointer-events: none;
+}
+
+.van-picker-content-Wrapper {
+  display: flex;
+  align-items: center;
+
+  .van-icon-clear {
+    color: #c8c9cc;
+    margin-left: 10px;
+  }
+
+  .check-list-arrow {
+    height: fit-content;
+    margin-left: 10px;
+  }
+
+  .van-picker-nocontent {
+    .theme(color, @placeholder-color);
+  }
 }
